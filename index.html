@@ -1,0 +1,2509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AOMI | Mochilas con estilo</title>
+
+    <style>
+
+        /* ================================
+           CONFIGURACIÓN GENERAL
+        ================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --negro: #17100e;
+            --blanco: #ffffff;
+            --fondo: #f7f3f0;
+            --marron: #4a2118;
+            --marron-oscuro: #2b120d;
+            --marron-claro: #6b3425;
+            --dorado: #c49a72;
+            --dorado-claro: #e5c4a5;
+            --gris: #777;
+            --borde: #e5ddd8;
+            --verde: #25D366;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--fondo);
+            color: var(--negro);
+        }
+
+        body.sin-scroll {
+            overflow: hidden;
+        }
+
+
+        /* ================================
+           HEADER
+        ================================= */
+
+        header {
+            width: 100%;
+            height: 75px;
+
+            background: rgba(255,255,255,.97);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 0 7%;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+
+            letter-spacing: 7px;
+
+            cursor: pointer;
+
+            color: var(--marron);
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+
+            color: var(--negro);
+
+            font-size: 15px;
+
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: var(--dorado);
+        }
+
+        .acciones {
+            display: flex;
+            gap: 12px;
+        }
+
+        .icono {
+            position: relative;
+
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--borde);
+
+            background: white;
+
+            cursor: pointer;
+
+            font-size: 17px;
+
+            transition: .3s;
+        }
+
+        .icono:hover {
+            background: var(--marron);
+            color: white;
+        }
+
+        #contador {
+            position: absolute;
+
+            top: -6px;
+            right: -6px;
+
+            width: 20px;
+            height: 20px;
+
+            border-radius: 50%;
+
+            background: var(--dorado);
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+
+        /* ================================
+           HERO PRINCIPAL AOMI
+        ================================= */
+
+        .hero {
+            min-height: 650px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(196,154,114,.28),
+                    transparent 42%
+                ),
+                linear-gradient(
+                    135deg,
+                    #24100c,
+                    #3d1912,
+                    #5b2b1e,
+                    #30130e
+                );
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        /* BRILLO IZQUIERDO */
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 550px;
+            height: 550px;
+
+            background: rgba(196,154,114,.15);
+
+            border-radius: 50%;
+
+            filter: blur(90px);
+
+            top: -230px;
+            left: -180px;
+        }
+
+
+        /* BRILLO DERECHO */
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            background: rgba(255,255,255,.07);
+
+            border-radius: 50%;
+
+            filter: blur(80px);
+
+            bottom: -220px;
+            right: -120px;
+        }
+
+
+        .hero-contenido {
+            max-width: 900px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* TEXTO SUPERIOR */
+
+        .hero p:first-child {
+            letter-spacing: 8px;
+
+            font-size: 13px;
+
+            color: var(--dorado-claro);
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* AOMI GIGANTE */
+
+        .hero h1 {
+            font-size: clamp(70px, 14vw, 155px);
+
+            margin-bottom: 20px;
+
+            letter-spacing: 18px;
+
+            font-weight: 900;
+
+            color: white;
+
+            text-shadow:
+                0 0 10px rgba(255,255,255,.2),
+                0 0 30px rgba(196,154,114,.45),
+                0 15px 45px rgba(0,0,0,.5);
+
+            animation: aparecerAomi 1.2s ease;
+        }
+
+
+        @keyframes aparecerAomi {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(35px)
+                    scale(.9);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        .hero-descripcion {
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            margin: 0 auto 35px;
+
+            max-width: 600px;
+
+            color: #f4e7df;
+        }
+
+
+        /* BOTÓN HERO */
+
+        .btn-principal {
+            padding: 16px 40px;
+
+            border: 1px solid rgba(255,255,255,.4);
+
+            border-radius: 40px;
+
+            background: white;
+
+            color: var(--marron-oscuro);
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+            font-size: 15px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.25);
+        }
+
+        .btn-principal:hover {
+            background: var(--dorado);
+
+            color: white;
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,.35);
+        }
+
+
+        /* ================================
+           BENEFICIOS
+        ================================= */
+
+        .beneficios {
+            background: white;
+
+            padding: 28px 7%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .beneficio {
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 12px;
+
+            text-align: left;
+        }
+
+        .beneficio span {
+            font-size: 27px;
+        }
+
+        .beneficio h3 {
+            font-size: 15px;
+
+            margin-bottom: 4px;
+        }
+
+        .beneficio p {
+            font-size: 12px;
+
+            color: var(--gris);
+        }
+
+
+        /* ================================
+           CATÁLOGO
+        ================================= */
+
+        .catalogo {
+            padding: 80px 7%;
+        }
+
+        .titulo {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .titulo span {
+            color: var(--dorado);
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+        .titulo h2 {
+            font-size: 42px;
+
+            margin: 12px 0;
+        }
+
+        .titulo p {
+            color: var(--gris);
+        }
+
+
+        /* ================================
+           HERRAMIENTAS
+        ================================= */
+
+        .herramientas {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 40px;
+
+            flex-wrap: wrap;
+        }
+
+        .buscador {
+            position: relative;
+
+            width: 330px;
+        }
+
+        .buscador input {
+            width: 100%;
+
+            padding: 14px 20px;
+
+            border-radius: 30px;
+
+            border: 1px solid var(--borde);
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        .buscador input:focus {
+            border-color: var(--dorado);
+        }
+
+        .filtros {
+            display: flex;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        .filtro {
+            padding: 10px 17px;
+
+            border-radius: 25px;
+
+            border: 1px solid var(--borde);
+
+            background: white;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .filtro:hover,
+        .filtro.activo {
+            background: var(--marron);
+
+            color: white;
+        }
+
+
+        /* ================================
+           PRODUCTOS
+        ================================= */
+
+        #productos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
+
+            gap: 28px;
+        }
+
+        .producto {
+            background: white;
+
+            border-radius: 16px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--borde);
+
+            transition: .3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 15px 35px rgba(74,33,24,.15);
+        }
+
+        .imagen-producto {
+            height: 320px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .imagen-producto img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: .5s;
+        }
+
+        .producto:hover img {
+            transform: scale(1.07);
+        }
+
+        .etiqueta {
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            background: white;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+        }
+
+        .favorito {
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            width: 38px;
+            height: 38px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .favorito:hover {
+            transform: scale(1.1);
+        }
+
+        .favorito.activo {
+            background: var(--marron);
+
+            color: white;
+        }
+
+        .info {
+            padding: 20px;
+        }
+
+        .categoria {
+            font-size: 11px;
+
+            color: var(--gris);
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+        }
+
+        .info h3 {
+            font-size: 21px;
+
+            margin: 8px 0;
+        }
+
+        .precio {
+            font-size: 19px;
+
+            font-weight: bold;
+
+            margin-bottom: 17px;
+        }
+
+        .botones-producto {
+            display: flex;
+
+            gap: 10px;
+        }
+
+        .agregar {
+            flex: 1;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            background: var(--marron);
+
+            color: white;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .agregar:hover {
+            background: var(--dorado);
+        }
+
+        .ver {
+            width: 48px;
+
+            border: 1px solid var(--borde);
+
+            border-radius: 9px;
+
+            background: white;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .ver:hover {
+            background: var(--marron);
+
+            color: white;
+        }
+
+
+        /* ================================
+           OVERLAY
+        ================================= */
+
+        .overlay {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,.5);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: .3s;
+
+            z-index: 2000;
+        }
+
+        .overlay.activo {
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        /* ================================
+           CARRITO
+        ================================= */
+
+        .carrito {
+            position: fixed;
+
+            top: 0;
+
+            right: -450px;
+
+            width: min(100%, 420px);
+
+            height: 100vh;
+
+            background: white;
+
+            z-index: 3000;
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition: .4s;
+        }
+
+        .carrito.activo {
+            right: 0;
+        }
+
+        .carrito-header {
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 25px;
+
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .cerrar {
+            border: none;
+
+            background: none;
+
+            font-size: 28px;
+
+            cursor: pointer;
+        }
+
+        #itemsCarrito {
+            flex: 1;
+
+            overflow-y: auto;
+
+            padding: 20px;
+        }
+
+        .vacio {
+            text-align: center;
+
+            margin-top: 70px;
+
+            color: var(--gris);
+        }
+
+        .item {
+            display: flex;
+
+            gap: 12px;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .item img {
+            width: 75px;
+            height: 90px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-info h4 {
+            margin-bottom: 6px;
+        }
+
+        .item-info p {
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+        .cantidad {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 10px;
+        }
+
+        .cantidad button {
+            width: 25px;
+            height: 25px;
+
+            border: 1px solid var(--borde);
+
+            background: white;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+        .eliminar {
+            border: none;
+
+            background: none;
+
+            cursor: pointer;
+
+            font-size: 17px;
+        }
+
+        .carrito-footer {
+            padding: 25px;
+
+            border-top: 1px solid var(--borde);
+        }
+
+        .total {
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+        }
+
+        .whatsapp {
+            width: 100%;
+
+            padding: 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: var(--verde);
+
+            color: white;
+
+            font-weight: bold;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .whatsapp:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(37,211,102,.25);
+        }
+
+
+        /* ================================
+           MODAL
+        ================================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0,0,0,.6);
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: .3s;
+
+            z-index: 4000;
+        }
+
+        .modal.activo {
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+        .modal-contenido {
+            background: white;
+
+            width: min(850px, 100%);
+
+            max-height: 90vh;
+
+            overflow-y: auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .modal-imagen img {
+            width: 100%;
+
+            height: 100%;
+
+            min-height: 450px;
+
+            object-fit: cover;
+        }
+
+        .modal-info {
+            padding: 50px 35px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .modal-info h2 {
+            font-size: 35px;
+
+            margin: 12px 0;
+        }
+
+        .modal-info p {
+            color: var(--gris);
+
+            line-height: 1.7;
+
+            margin-bottom: 20px;
+        }
+
+        .modal-precio {
+            font-size: 24px;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+        }
+
+        .modal-cerrar {
+            position: absolute;
+
+            top: 15px;
+            right: 15px;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            z-index: 10;
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            background:
+                linear-gradient(
+                    135deg,
+                    #24100c,
+                    #3d1912
+                );
+
+            color: white;
+
+            padding: 55px 7% 25px;
+        }
+
+        .footer-contenido {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(200px, 1fr));
+
+            gap: 40px;
+
+            margin-bottom: 35px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 15px;
+
+            letter-spacing: 3px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            color: #c9b9b3;
+
+            line-height: 1.9;
+
+            font-size: 14px;
+
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #5a3930;
+
+            color: #9e8981;
+
+            font-size: 13px;
+        }
+
+
+        /* ================================
+           RESPONSIVE TABLET
+        ================================= */
+
+        @media(max-width: 800px) {
+
+            nav {
+                display: none;
+            }
+
+            .beneficios {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-contenido {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-imagen img {
+                min-height: 300px;
+
+                max-height: 400px;
+            }
+
+        }
+
+
+        /* ================================
+           RESPONSIVE CELULAR
+        ================================= */
+
+        @media(max-width: 600px) {
+
+            header {
+                padding: 0 5%;
+            }
+
+            .logo {
+                font-size: 23px;
+
+                letter-spacing: 5px;
+            }
+
+            .hero {
+                min-height: 580px;
+
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 75px;
+
+                letter-spacing: 8px;
+            }
+
+            .hero-descripcion {
+                font-size: 15px;
+            }
+
+            .catalogo {
+                padding: 60px 5%;
+            }
+
+            .titulo h2 {
+                font-size: 32px;
+            }
+
+            #productos {
+                grid-template-columns: 1fr 1fr;
+
+                gap: 12px;
+            }
+
+            .imagen-producto {
+                height: 220px;
+            }
+
+            .info {
+                padding: 13px;
+            }
+
+            .info h3 {
+                font-size: 16px;
+            }
+
+            .precio {
+                font-size: 15px;
+            }
+
+            .agregar {
+                font-size: 11px;
+
+                padding: 10px 5px;
+            }
+
+            .ver {
+                width: 38px;
+            }
+
+            .buscador {
+                width: 100%;
+            }
+
+            .filtros {
+                width: 100%;
+            }
+
+            .filtro {
+                flex: 1;
+
+                padding: 9px 10px;
+
+                font-size: 12px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <header>
+
+        <div class="logo">
+            AOMI
+        </div>
+
+        <nav>
+
+            <a href="#">
+                Inicio
+            </a>
+
+            <a href="#catalogo">
+                Mochilas
+            </a>
+
+            <a href="#contacto">
+                Contacto
+            </a>
+
+        </nav>
+
+        <div class="acciones">
+
+            <button
+                class="icono"
+                onclick="abrirCarrito()"
+            >
+
+                🛒
+
+                <span id="contador">
+                    0
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================
+         HERO
+    ====================================== -->
+
+    <section class="hero">
+
+        <div class="hero-contenido">
+
+            <p>
+                COLECCIÓN EXCLUSIVA
+            </p>
+
+            <h1>
+                AOMI
+            </h1>
+
+            <p class="hero-descripcion">
+
+                Mochilas que representan tu personalidad,
+                tu estilo y tu esencia.
+
+            </p>
+
+            <button
+                class="btn-principal"
+                onclick="document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})"
+            >
+
+                ✨ DESCUBRIR COLECCIÓN
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         BENEFICIOS
+    ====================================== -->
+
+    <section class="beneficios">
+
+        <div class="beneficio">
+
+            <span>
+                🚚
+            </span>
+
+            <div>
+
+                <h3>
+                    Envíos
+                </h3>
+
+                <p>
+                    Consulta disponibilidad para tu ciudad.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="beneficio">
+
+            <span>
+                👜
+            </span>
+
+            <div>
+
+                <h3>
+                    Diseños únicos
+                </h3>
+
+                <p>
+                    Encuentra la mochila ideal para ti.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="beneficio">
+
+            <span>
+                💬
+            </span>
+
+            <div>
+
+                <h3>
+                    Atención personalizada
+                </h3>
+
+                <p>
+                    Realiza tu pedido por WhatsApp.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         CATÁLOGO
+    ====================================== -->
+
+    <section
+        class="catalogo"
+        id="catalogo"
+    >
+
+        <div class="titulo">
+
+            <span>
+                NUESTRO CATÁLOGO
+            </span>
+
+            <h2>
+                Todas las mochilas
+            </h2>
+
+            <p>
+                Elige tu favorita y agrégala al carrito.
+            </p>
+
+        </div>
+
+
+        <div class="herramientas">
+
+            <div class="buscador">
+
+                <input
+                    type="text"
+                    id="buscar"
+                    placeholder="🔍 Buscar mochila..."
+                    onkeyup="filtrarProductos()"
+                >
+
+            </div>
+
+
+            <div class="filtros">
+
+                <button
+                    class="filtro activo"
+                    onclick="cambiarCategoria('todos', this)"
+                >
+                    Todos
+                </button>
+
+                <button
+                    class="filtro"
+                    onclick="cambiarCategoria('premium', this)"
+                >
+                    Clásicas
+                </button>
+
+                <button
+                    class="filtro"
+                    onclick="cambiarCategoria('mini', this)"
+                >
+                    Mini
+                </button>
+
+                <button
+                    class="filtro"
+                    onclick="cambiarCategoria('mediana', this)"
+                >
+                    Medianas
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div id="productos"></div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         CARRITO
+    ====================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <aside
+        class="carrito"
+        id="carrito"
+    >
+
+        <div class="carrito-header">
+
+            <h2>
+                Mi carrito 🛒
+            </h2>
+
+            <button
+                class="cerrar"
+                onclick="cerrarCarrito()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div id="itemsCarrito">
+
+            <div class="vacio">
+
+                <h3>
+                    Tu carrito está vacío
+                </h3>
+
+                <p>
+                    Agrega una mochila para comenzar.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="carrito-footer">
+
+            <div class="total">
+
+                <span>
+                    Total:
+                </span>
+
+                <span id="total">
+                    $0 COP
+                </span>
+
+            </div>
+
+            <button
+                class="whatsapp"
+                onclick="finalizarCompra()"
+            >
+
+                💬 Comprar por WhatsApp
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================
+         MODAL PRODUCTO
+    ====================================== -->
+
+    <div
+        class="modal"
+        id="modal"
+    >
+
+        <div class="modal-contenido">
+
+            <button
+                class="modal-cerrar"
+                onclick="cerrarModal()"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-imagen">
+
+                <img
+                    id="modalImagen"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="modal-info">
+
+                <span
+                    class="categoria"
+                    id="modalCategoria"
+                ></span>
+
+
+                <h2 id="modalNombre"></h2>
+
+
+                <p id="modalDescripcion"></p>
+
+
+                <div
+                    class="modal-precio"
+                    id="modalPrecio"
+                ></div>
+
+
+                <button
+                    class="agregar"
+                    id="modalAgregar"
+                >
+
+                    🛒 Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer id="contacto">
+
+        <div class="footer-contenido">
+
+            <div class="footer-col">
+
+                <h3>
+                    AOMI
+                </h3>
+
+                <p>
+                    Mochilas y diseños para complementar
+                    tu estilo.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h3>
+                    Contacto
+                </h3>
+
+                <p>
+                    WhatsApp
+                </p>
+
+                <p>
+                    Instagram: @AOMI_COM
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h3>
+                    Catálogo
+                </h3>
+
+                <a href="#catalogo">
+                    Ver todas las mochilas
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 AOMI - Todos los derechos reservados
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+
+        /* =====================================
+           PRODUCTOS
+        ===================================== */
+
+        const productos = [
+
+            {
+                id: 1,
+                nombre: "Amira",
+                precio: 90000,
+                categoria: "premium",
+                imagen: "img/amira.jpg",
+                descripcion: "Mochila elegante y versátil."
+            },
+
+            {
+                id: 2,
+                nombre: "Layla",
+                precio: 95000,
+                categoria: "premium",
+                imagen: "img/layla.jpg",
+                descripcion: "Un diseño moderno para complementar tu estilo."
+            },
+
+            {
+                id: 3,
+                nombre: "Zahra",
+                precio: 95000,
+                categoria: "premium",
+                imagen: "img/zahra.jpg",
+                descripcion: "Diseño elegante de la colección AOMI."
+            },
+
+            {
+                id: 4,
+                nombre: "Hana",
+                precio: 90000,
+                categoria: "premium",
+                imagen: "img/hana.jpg",
+                descripcion: "Una mochila práctica y con mucho estilo."
+            },
+
+            {
+                id: 5,
+                nombre: "Malak",
+                precio: 95000,
+                categoria: "premium",
+                imagen: "img/malak.jpg",
+                descripcion: "Diseño sofisticado y moderno."
+            },
+
+            {
+                id: 6,
+                nombre: "Maha",
+                precio: 90000,
+                categoria: "premium",
+                imagen: "img/maha.jpg",
+                descripcion: "Mochila elegante para cualquier ocasión."
+            },
+
+            {
+                id: 7,
+                nombre: "Aisha",
+                precio: 95000,
+                categoria: "premium",
+                imagen: "img/aisha.jpg",
+                descripcion: "Un diseño único de nuestra colección."
+            },
+
+            {
+                id: 8,
+                nombre: "Alia tradicional",
+                precio: 85000,
+                categoria: "premium",
+                imagen: "img/alia.jpg",
+                descripcion: "Diseño tradicional y elegante."
+            },
+
+            {
+                id: 9,
+                nombre: "Mini de perlas",
+                precio: 90000,
+                categoria: "mini",
+                imagen: "img/mini-perlas.jpg",
+                descripcion: "Mochila mini con detalles especiales."
+            },
+
+            {
+                id: 10,
+                nombre: "Mini de lentejuela",
+                precio: 95000,
+                categoria: "mini",
+                imagen: "img/mini-lentejuela.jpg",
+                descripcion: "Un diseño brillante y llamativo."
+            },
+
+            {
+                id: 11,
+                nombre: "Mini de perlas gasa corta",
+                precio: 95000,
+                categoria: "mini",
+                imagen: "img/mini-perlas-gasa.jpg",
+                descripcion: "Diseño compacto y elegante."
+            },
+
+            {
+                id: 12,
+                nombre: "Mediana unicolor",
+                precio: 85000,
+                categoria: "mediana",
+                imagen: "img/mediana-unicolor.jpg",
+                descripcion: "Mochila mediana, práctica y versátil."
+            },
+
+            {
+                id: 13,
+                nombre: "Virgen mediana",
+                precio: 120000,
+                categoria: "mediana",
+                imagen: "img/virgen-mediana.jpg",
+                descripcion: "Diseño especial de tamaño mediano."
+            },
+
+            {
+                id: 14,
+                nombre: "Mediana unicolor especial",
+                precio: 140000,
+                categoria: "mediana",
+                imagen: "img/mediana-unicolor-especial.jpg",
+                descripcion: "Diseño especial de la colección AOMI."
+            }
+
+        ];
+
+
+        let carrito = [];
+
+        let categoriaActual = "todos";
+
+
+        /* =====================================
+           FORMATO DE PRECIO
+        ===================================== */
+
+        function formatoPrecio(precio) {
+
+            return "$" +
+                precio.toLocaleString("es-CO") +
+                " COP";
+
+        }
+
+
+        /* =====================================
+           MOSTRAR PRODUCTOS
+        ===================================== */
+
+        function mostrarProductos(lista) {
+
+            const contenedor =
+                document.getElementById("productos");
+
+            contenedor.innerHTML = "";
+
+
+            if (lista.length === 0) {
+
+                contenedor.innerHTML = `
+
+                    <div style="
+                        grid-column:1/-1;
+                        text-align:center;
+                        padding:50px;
+                    ">
+
+                        <h3>
+                            No encontramos mochilas 😢
+                        </h3>
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            lista.forEach(producto => {
+
+                contenedor.innerHTML += `
+
+                    <article class="producto">
+
+                        <div class="imagen-producto">
+
+                            <img
+                                src="${producto.imagen}"
+                                alt="${producto.nombre}"
+                            >
+
+                            <span class="etiqueta">
+                                ${producto.categoria}
+                            </span>
+
+                            <button
+                                class="favorito"
+                                onclick="favorito(this)"
+                            >
+                                ♡
+                            </button>
+
+                        </div>
+
+
+                        <div class="info">
+
+                            <span class="categoria">
+                                ${producto.categoria}
+                            </span>
+
+                            <h3>
+                                ${producto.nombre}
+                            </h3>
+
+                            <div class="precio">
+                                ${formatoPrecio(producto.precio)}
+                            </div>
+
+
+                            <div class="botones-producto">
+
+                                <button
+                                    class="agregar"
+                                    onclick="agregarCarrito(${producto.id})"
+                                >
+
+                                    🛒 Agregar
+
+                                </button>
+
+
+                                <button
+                                    class="ver"
+                                    onclick="verProducto(${producto.id})"
+                                >
+
+                                    👁
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            });
+
+        }
+
+
+        /* =====================================
+           CAMBIAR CATEGORÍA
+        ===================================== */
+
+        function cambiarCategoria(categoria, boton) {
+
+            categoriaActual = categoria;
+
+
+            document
+                .querySelectorAll(".filtro")
+                .forEach(btn => {
+
+                    btn.classList.remove("activo");
+
+                });
+
+
+            boton.classList.add("activo");
+
+
+            filtrarProductos();
+
+        }
+
+
+        /* =====================================
+           BUSCADOR
+        ===================================== */
+
+        function filtrarProductos() {
+
+            const texto =
+                document
+                    .getElementById("buscar")
+                    .value
+                    .toLowerCase();
+
+
+            const resultado =
+                productos.filter(producto => {
+
+                    const nombre =
+                        producto.nombre
+                            .toLowerCase()
+                            .includes(texto);
+
+
+                    const categoria =
+                        categoriaActual === "todos" ||
+                        producto.categoria === categoriaActual;
+
+
+                    return nombre && categoria;
+
+                });
+
+
+            mostrarProductos(resultado);
+
+        }
+
+
+        /* =====================================
+           FAVORITOS
+        ===================================== */
+
+        function favorito(boton) {
+
+            boton.classList.toggle("activo");
+
+
+            boton.innerHTML =
+                boton.classList.contains("activo")
+                ? "♥"
+                : "♡";
+
+        }
+
+
+        /* =====================================
+           AGREGAR AL CARRITO
+        ===================================== */
+
+        function agregarCarrito(id) {
+
+            const producto =
+                productos.find(
+                    p => p.id === id
+                );
+
+
+            const existe =
+                carrito.find(
+                    p => p.id === id
+                );
+
+
+            if (existe) {
+
+                existe.cantidad++;
+
+            } else {
+
+                carrito.push({
+
+                    ...producto,
+
+                    cantidad: 1
+
+                });
+
+            }
+
+
+            actualizarCarrito();
+
+        }
+
+
+        /* =====================================
+           ACTUALIZAR CARRITO
+        ===================================== */
+
+        function actualizarCarrito() {
+
+            const contenedor =
+                document.getElementById("itemsCarrito");
+
+
+            contenedor.innerHTML = "";
+
+
+            if (carrito.length === 0) {
+
+                contenedor.innerHTML = `
+
+                    <div class="vacio">
+
+                        <h3>
+                            Tu carrito está vacío
+                        </h3>
+
+                        <p>
+                            Agrega una mochila para comenzar.
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            carrito.forEach(producto => {
+
+                contenedor.innerHTML += `
+
+                    <div class="item">
+
+                        <img
+                            src="${producto.imagen}"
+                            alt="${producto.nombre}"
+                        >
+
+
+                        <div class="item-info">
+
+                            <h4>
+                                ${producto.nombre}
+                            </h4>
+
+                            <p>
+                                ${formatoPrecio(producto.precio)}
+                            </p>
+
+
+                            <div class="cantidad">
+
+                                <button
+                                    onclick="cambiarCantidad(
+                                        ${producto.id},
+                                        -1
+                                    )"
+                                >
+                                    −
+                                </button>
+
+
+                                <span>
+                                    ${producto.cantidad}
+                                </span>
+
+
+                                <button
+                                    onclick="cambiarCantidad(
+                                        ${producto.id},
+                                        1
+                                    )"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="eliminar"
+                            onclick="eliminarProducto(${producto.id})"
+                        >
+
+                            🗑️
+
+                        </button>
+
+                    </div>
+
+                `;
+
+            });
+
+
+            const cantidadTotal =
+                carrito.reduce(
+
+                    (total, producto) =>
+                        total +
+                        producto.cantidad,
+
+                    0
+
+                );
+
+
+            const precioTotal =
+                carrito.reduce(
+
+                    (total, producto) =>
+                        total +
+                        producto.precio *
+                        producto.cantidad,
+
+                    0
+
+                );
+
+
+            document
+                .getElementById("contador")
+                .textContent =
+                cantidadTotal;
+
+
+            document
+                .getElementById("total")
+                .textContent =
+                formatoPrecio(precioTotal);
+
+        }
+
+
+        /* =====================================
+           CAMBIAR CANTIDAD
+        ===================================== */
+
+        function cambiarCantidad(id, cambio) {
+
+            const producto =
+                carrito.find(
+                    p => p.id === id
+                );
+
+
+            if (!producto) {
+                return;
+            }
+
+
+            producto.cantidad += cambio;
+
+
+            if (producto.cantidad <= 0) {
+
+                eliminarProducto(id);
+
+                return;
+
+            }
+
+
+            actualizarCarrito();
+
+        }
+
+
+        /* =====================================
+           ELIMINAR
+        ===================================== */
+
+        function eliminarProducto(id) {
+
+            carrito =
+                carrito.filter(
+                    producto =>
+                        producto.id !== id
+                );
+
+
+            actualizarCarrito();
+
+        }
+
+
+        /* =====================================
+           ABRIR CARRITO
+        ===================================== */
+
+        function abrirCarrito() {
+
+            document
+                .getElementById("carrito")
+                .classList
+                .add("activo");
+
+
+            document
+                .getElementById("overlay")
+                .classList
+                .add("activo");
+
+
+            document.body
+                .classList
+                .add("sin-scroll");
+
+        }
+
+
+        /* =====================================
+           CERRAR CARRITO
+        ===================================== */
+
+        function cerrarCarrito() {
+
+            document
+                .getElementById("carrito")
+                .classList
+                .remove("activo");
+
+
+            document
+                .getElementById("overlay")
+                .classList
+                .remove("activo");
+
+
+            document.body
+                .classList
+                .remove("sin-scroll");
+
+        }
+
+
+        /* =====================================
+           CLICK FUERA DEL CARRITO
+        ===================================== */
+
+        document
+            .getElementById("overlay")
+            .addEventListener(
+                "click",
+                cerrarCarrito
+            );
+
+
+        /* =====================================
+           VER PRODUCTO
+        ===================================== */
+
+        function verProducto(id) {
+
+            const producto =
+                productos.find(
+                    p => p.id === id
+                );
+
+
+            document
+                .getElementById("modalImagen")
+                .src =
+                producto.imagen;
+
+
+            document
+                .getElementById("modalImagen")
+                .alt =
+                producto.nombre;
+
+
+            document
+                .getElementById("modalNombre")
+                .textContent =
+                producto.nombre;
+
+
+            document
+                .getElementById("modalCategoria")
+                .textContent =
+                producto.categoria;
+
+
+            document
+                .getElementById("modalDescripcion")
+                .textContent =
+                producto.descripcion;
+
+
+            document
+                .getElementById("modalPrecio")
+                .textContent =
+                formatoPrecio(
+                    producto.precio
+                );
+
+
+            document
+                .getElementById("modalAgregar")
+                .onclick =
+                function() {
+
+                    agregarCarrito(
+                        producto.id
+                    );
+
+                    cerrarModal();
+
+                    abrirCarrito();
+
+                };
+
+
+            document
+                .getElementById("modal")
+                .classList
+                .add("activo");
+
+        }
+
+
+        /* =====================================
+           CERRAR MODAL
+        ===================================== */
+
+        function cerrarModal() {
+
+            document
+                .getElementById("modal")
+                .classList
+                .remove("activo");
+
+        }
+
+
+        /* =====================================
+           CERRAR MODAL AL HACER CLICK AFUERA
+        ===================================== */
+
+        document
+            .getElementById("modal")
+            .addEventListener(
+                "click",
+                function(e) {
+
+                    if (
+                        e.target ===
+                        document.getElementById("modal")
+                    ) {
+
+                        cerrarModal();
+
+                    }
+
+                }
+            );
+
+
+        /* =====================================
+           WHATSAPP
+        ===================================== */
+
+        function finalizarCompra() {
+
+            if (carrito.length === 0) {
+
+                alert(
+                    "Tu carrito está vacío 🛒"
+                );
+
+                return;
+
+            }
+
+
+            let mensaje =
+                "Hola 👋%0A%0A" +
+                "Quiero realizar el siguiente pedido:%0A%0A";
+
+
+            carrito.forEach(producto => {
+
+                mensaje +=
+
+                    "👜 " +
+                    producto.nombre +
+                    "%0A" +
+
+                    "Cantidad: " +
+                    producto.cantidad +
+                    "%0A" +
+
+                    "Subtotal: " +
+
+                    formatoPrecio(
+                        producto.precio *
+                        producto.cantidad
+                    ) +
+
+                    "%0A%0A";
+
+            });
+
+
+            const total =
+                carrito.reduce(
+
+                    (acumulado, producto) =>
+
+                        acumulado +
+                        producto.precio *
+                        producto.cantidad,
+
+                    0
+
+                );
+
+
+            mensaje +=
+
+                "💰 TOTAL: " +
+                formatoPrecio(total);
+
+
+            /*
+                =====================================
+                CAMBIA ESTE NÚMERO POR TU WHATSAPP
+
+                Ejemplo Colombia:
+
+                573001234567
+
+                Sin +, espacios ni guiones.
+                =====================================
+            */
+
+            const numeroWhatsApp =
+                "573218516022";
+
+
+            window.open(
+
+                "https://wa.me/" +
+                numeroWhatsApp +
+                "?text=" +
+                mensaje,
+
+                "_blank"
+
+            );
+
+        }
+
+
+        /* =====================================
+           INICIAR PÁGINA
+        ===================================== */
+
+        mostrarProductos(productos);
+
+        actualizarCarrito();
+
+
+    </script>
+
+</body>
+</html>
