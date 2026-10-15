@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#3d1912">
     <meta name="description" content="Descubre las mochilas AOMI. Diseños elegantes, modernos y versátiles para complementar tu estilo.">
-
     <title>AOMI | Mochilas con estilo</title>
 
     <style>
@@ -136,8 +135,6 @@
         }
 
         /* PORTADA */
-       
-/* PORTADA */
         .hero {
             min-height: 650px;
             display: flex;
@@ -242,8 +239,6 @@
             color: white;
             transform: translateY(-5px);
         }
-
-
 
         /* BENEFICIOS */
         .beneficios {
@@ -353,7 +348,7 @@
             color: white;
         }
 
-        /* TARJETAS DE PRODUCTOS */
+        /* TARJETAS */
         #productos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -579,6 +574,13 @@
             font-weight: bold;
         }
 
+        .item-info .item-color {
+            font-size: 12px;
+            font-weight: normal;
+            margin: 5px 0;
+            color: var(--marron);
+        }
+
         .cantidad {
             display: flex;
             align-items: center;
@@ -715,6 +717,51 @@
             font-size: 22px;
             cursor: pointer;
             z-index: 10;
+        }
+
+        /* COLORES: SOLO ALIA TRADICIONAL */
+        .selector-colores {
+            display: none;
+            margin: 0 0 20px;
+        }
+
+        .selector-colores h3 {
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .botones-colores {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .color-opcion {
+            padding: 9px 10px;
+            border: 1px solid var(--borde);
+            border-radius: 8px;
+            background: white;
+            color: var(--negro);
+            font-size: 12px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .color-opcion:hover {
+            border-color: var(--dorado);
+        }
+
+        .color-opcion.seleccionado {
+            border: 2px solid var(--marron);
+            background: var(--marron);
+            color: white;
+        }
+
+        .error-color {
+            display: none;
+            color: #b3261e !important;
+            font-size: 13px;
+            margin: 10px 0 0 !important;
         }
 
         /* PIE DE PÁGINA */
@@ -950,6 +997,11 @@
                 font-size: 27px;
             }
 
+            .color-opcion {
+                padding: 8px;
+                font-size: 11px;
+            }
+
             footer {
                 padding: 40px 6% 20px;
             }
@@ -980,12 +1032,7 @@
         </nav>
 
         <div class="acciones">
-            <button
-                class="icono"
-                type="button"
-                onclick="abrirCarrito()"
-                aria-label="Abrir carrito"
-            >
+            <button class="icono" type="button" onclick="abrirCarrito()" aria-label="Abrir carrito">
                 🛒
                 <span id="contador">0</span>
             </button>
@@ -997,12 +1044,10 @@
         <div class="hero-contenido">
             <p class="hero-etiqueta">COLECCIÓN EXCLUSIVA</p>
             <h1>AOMI</h1>
-
             <p class="hero-descripcion">
                 Mochilas que representan tu personalidad,
                 tu estilo y tu esencia.
             </p>
-
             <button
                 class="btn-principal"
                 type="button"
@@ -1060,36 +1105,17 @@
             </div>
 
             <div class="filtros" aria-label="Filtrar por categoría">
-                <button
-                    class="filtro activo"
-                    type="button"
-                    onclick="cambiarCategoria('todos', this)"
-                >Todos</button>
-
-                <button
-                    class="filtro"
-                    type="button"
-                    onclick="cambiarCategoria('premium', this)"
-                >Clásicas</button>
-
-                <button
-                    class="filtro"
-                    type="button"
-                    onclick="cambiarCategoria('mini', this)"
-                >Mini</button>
-
-                <button
-                    class="filtro"
-                    type="button"
-                    onclick="cambiarCategoria('mediana', this)"
-                >Medianas</button>
+                <button class="filtro activo" type="button" onclick="cambiarCategoria('todos', this)">Todos</button>
+                <button class="filtro" type="button" onclick="cambiarCategoria('premium', this)">Clásicas</button>
+                <button class="filtro" type="button" onclick="cambiarCategoria('mini', this)">Mini</button>
+                <button class="filtro" type="button" onclick="cambiarCategoria('mediana', this)">Medianas</button>
             </div>
         </div>
 
         <div id="productos" aria-live="polite"></div>
     </section>
 
-    <!-- FONDO DEL CARRITO -->
+    <!-- FONDO OSCURO -->
     <div class="overlay" id="overlay"></div>
 
     <!-- CARRITO -->
@@ -1103,12 +1129,7 @@
     >
         <div class="carrito-header">
             <h2>Mi carrito 🛒</h2>
-            <button
-                class="cerrar"
-                type="button"
-                onclick="cerrarCarrito()"
-                aria-label="Cerrar carrito"
-            >×</button>
+            <button class="cerrar" type="button" onclick="cerrarCarrito()" aria-label="Cerrar carrito">×</button>
         </div>
 
         <div id="itemsCarrito">
@@ -1124,11 +1145,7 @@
                 <span id="total">$0 COP</span>
             </div>
 
-            <button
-                class="whatsapp"
-                type="button"
-                onclick="finalizarCompra()"
-            >
+            <button class="whatsapp" type="button" onclick="finalizarCompra()">
                 💬 Comprar por WhatsApp
             </button>
         </div>
@@ -1144,12 +1161,7 @@
         aria-labelledby="modalNombre"
     >
         <div class="modal-contenido">
-            <button
-                class="modal-cerrar"
-                type="button"
-                onclick="cerrarModal()"
-                aria-label="Cerrar detalles"
-            >×</button>
+            <button class="modal-cerrar" type="button" onclick="cerrarModal()" aria-label="Cerrar detalles">×</button>
 
             <div class="modal-imagen">
                 <img id="modalImagen" src="" alt="">
@@ -1159,13 +1171,30 @@
                 <span class="categoria" id="modalCategoria"></span>
                 <h2 id="modalNombre"></h2>
                 <p id="modalDescripcion"></p>
+
+                <!-- SELECTOR EXCLUSIVO DE ALIA TRADICIONAL -->
+                <div class="selector-colores" id="selectorColores">
+                    <h3>Selecciona el color:</h3>
+
+                    <div class="botones-colores" id="botonesColores">
+                        <button type="button" class="color-opcion" data-color="Blanco perla" aria-pressed="false">Blanco perla</button>
+                        <button type="button" class="color-opcion" data-color="Fucsia" aria-pressed="false">Fucsia</button>
+                        <button type="button" class="color-opcion" data-color="Verde manzana" aria-pressed="false">Verde manzana</button>
+                        <button type="button" class="color-opcion" data-color="Plateado" aria-pressed="false">Plateado</button>
+                        <button type="button" class="color-opcion" data-color="Azul" aria-pressed="false">Azul</button>
+                        <button type="button" class="color-opcion" data-color="Rosado" aria-pressed="false">Rosado</button>
+                        <button type="button" class="color-opcion" data-color="Amarillo" aria-pressed="false">Amarillo</button>
+                        <button type="button" class="color-opcion" data-color="Lila" aria-pressed="false">Lila</button>
+                    </div>
+
+                    <p class="error-color" id="errorColor" role="alert">
+                        Selecciona un color antes de continuar.
+                    </p>
+                </div>
+
                 <div class="modal-precio" id="modalPrecio"></div>
 
-                <button
-                    class="agregar"
-                    type="button"
-                    id="modalAgregar"
-                >
+                <button class="agregar" type="button" id="modalAgregar">
                     🛒 Agregar al carrito
                 </button>
             </div>
@@ -1183,32 +1212,21 @@
             <div class="footer-col">
                 <h3>Contacto</h3>
                 <p>
-                    <a
-                        href="https://wa.me/573218516022"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >WhatsApp</a>
+                    <a href="https://wa.me/573218516022" target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 </p>
                 <p>
                     Instagram:
-                    <a
-                        href="https://www.instagram.com/aomi_co?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw=="
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >aomi_co</a>
+                    <a href="https://www.instagram.com/aomi_co/" target="_blank" rel="noopener noreferrer">aomi_co</a>
                 </p>
-                 <p>
-        Correo:
-        <a href="aomi44093@gmail.com">
-            aomi44093@gmail.com
-        </a>
-    </p>
-</div>
+                <p>
+                    Correo:
+                    <a href="mailto:aomi44093@gmail.com">aomi44093@gmail.com</a>
+                </p>
             </div>
 
             <div class="footer-col">
                 <h3>Catálogo</h3>
-                <a href="#catalogo">Ver todas las mochilas</a>
+                <p><a href="#catalogo">Ver todas las mochilas</a></p>
             </div>
         </div>
 
@@ -1290,6 +1308,18 @@
 
         let carrito = [];
         let categoriaActual = "todos";
+        let colorSeleccionado = null;
+
+        const COLORES_ALIA = [
+            "Blanco perla",
+            "Fucsia",
+            "Verde manzana",
+            "Plateado",
+            "Azul",
+            "Rosado",
+            "Amarillo",
+            "Lila"
+        ];
 
         /* FORMATO DE PRECIO */
         function formatoPrecio(precio) {
@@ -1300,7 +1330,7 @@
             });
         }
 
-        /* ESCAPAR TEXTO PARA EVITAR INSERTAR HTML NO DESEADO */
+        /* ESCAPAR TEXTO */
         function escaparHTML(texto) {
             return String(texto).replace(/[&<>"']/g, caracter => ({
                 "&": "&amp;",
@@ -1357,20 +1387,11 @@
 
                         <h3>${escaparHTML(producto.nombre)}</h3>
 
-                        <div class="precio">
-                            ${formatoPrecio(producto.precio)}
-                        </div>
+                        <div class="precio">${formatoPrecio(producto.precio)}</div>
 
                         <div class="botones-producto">
-                            <button class="agregar" type="button">
-                                🛒 Agregar
-                            </button>
-
-                            <button
-                                class="ver"
-                                type="button"
-                                aria-label="Ver detalles de ${escaparHTML(producto.nombre)}"
-                            >👁</button>
+                            <button class="agregar" type="button">🛒 Agregar</button>
+                            <button class="ver" type="button" aria-label="Ver detalles de ${escaparHTML(producto.nombre)}">👁</button>
                         </div>
                     </div>
                 `;
@@ -1382,7 +1403,13 @@
                 });
 
                 tarjeta.querySelector(".agregar").addEventListener("click", () => {
-                    agregarCarrito(producto.id);
+                    // Alia debe abrir el selector de colores.
+                    if (producto.id === 8) {
+                        verProducto(producto.id);
+                    } else {
+                        agregarCarrito(producto.id);
+                        abrirCarrito();
+                    }
                 });
 
                 tarjeta.querySelector(".ver").addEventListener("click", () => {
@@ -1418,11 +1445,8 @@
 
         /* BUSCADOR */
         function filtrarProductos() {
-            const texto = document
-                .getElementById("buscar")
-                .value
-                .trim()
-                .toLocaleLowerCase("es");
+            const texto = document.getElementById("buscar")
+                .value.trim().toLocaleLowerCase("es");
 
             const resultado = productos.filter(producto => {
                 const coincideNombre = producto.nombre
@@ -1440,18 +1464,29 @@
         }
 
         /* AGREGAR AL CARRITO */
-        function agregarCarrito(id) {
+        function agregarCarrito(id, color = null) {
             const producto = productos.find(p => p.id === id);
 
             if (!producto) return;
 
-            const existente = carrito.find(p => p.id === id);
+            // No permitir agregar Alia sin seleccionar un color.
+            if (producto.id === 8 && !COLORES_ALIA.includes(color)) {
+                verProducto(id);
+                document.getElementById("errorColor").style.display = "block";
+                return;
+            }
+
+            // Cada color de Alia es una variante independiente.
+            const existente = carrito.find(p =>
+                p.id === id && (p.color || null) === (color || null)
+            );
 
             if (existente) {
                 existente.cantidad++;
             } else {
                 carrito.push({
                     ...producto,
+                    color: producto.id === 8 ? color : null,
                     cantidad: 1
                 });
             }
@@ -1473,7 +1508,7 @@
                 `;
             }
 
-            carrito.forEach(producto => {
+            carrito.forEach((producto, indice) => {
                 const item = document.createElement("div");
                 item.className = "item";
 
@@ -1485,42 +1520,35 @@
 
                     <div class="item-info">
                         <h4>${escaparHTML(producto.nombre)}</h4>
+
+                        ${producto.color ? `
+                            <div class="item-color">
+                                🎨 Color: ${escaparHTML(producto.color)}
+                            </div>
+                        ` : ""}
+
                         <p>${formatoPrecio(producto.precio)}</p>
 
                         <div class="cantidad">
-                            <button
-                                type="button"
-                                class="restar"
-                                aria-label="Disminuir cantidad"
-                            >−</button>
-
+                            <button type="button" class="restar" aria-label="Disminuir cantidad">−</button>
                             <span>${producto.cantidad}</span>
-
-                            <button
-                                type="button"
-                                class="sumar"
-                                aria-label="Aumentar cantidad"
-                            >+</button>
+                            <button type="button" class="sumar" aria-label="Aumentar cantidad">+</button>
                         </div>
                     </div>
 
-                    <button
-                        class="eliminar"
-                        type="button"
-                        aria-label="Eliminar ${escaparHTML(producto.nombre)}"
-                    >🗑️</button>
+                    <button class="eliminar" type="button" aria-label="Eliminar producto">🗑️</button>
                 `;
 
                 item.querySelector(".restar").addEventListener("click", () => {
-                    cambiarCantidad(producto.id, -1);
+                    cambiarCantidadPorIndice(indice, -1);
                 });
 
                 item.querySelector(".sumar").addEventListener("click", () => {
-                    cambiarCantidad(producto.id, 1);
+                    cambiarCantidadPorIndice(indice, 1);
                 });
 
                 item.querySelector(".eliminar").addEventListener("click", () => {
-                    eliminarProducto(producto.id);
+                    eliminarPorIndice(indice);
                 });
 
                 contenedor.appendChild(item);
@@ -1540,25 +1568,24 @@
             document.getElementById("total").textContent = formatoPrecio(precioTotal);
         }
 
-        /* CAMBIAR CANTIDAD */
-        function cambiarCantidad(id, cambio) {
-            const producto = carrito.find(p => p.id === id);
+        /* CAMBIAR CANTIDAD POR VARIANTE */
+        function cambiarCantidadPorIndice(indice, cambio) {
+            if (!carrito[indice]) return;
 
-            if (!producto) return;
+            carrito[indice].cantidad += cambio;
 
-            producto.cantidad += cambio;
-
-            if (producto.cantidad <= 0) {
-                eliminarProducto(id);
-                return;
+            if (carrito[indice].cantidad <= 0) {
+                carrito.splice(indice, 1);
             }
 
             actualizarCarrito();
         }
 
-        /* ELIMINAR PRODUCTO */
-        function eliminarProducto(id) {
-            carrito = carrito.filter(producto => producto.id !== id);
+        /* ELIMINAR VARIANTE */
+        function eliminarPorIndice(indice) {
+            if (indice < 0 || indice >= carrito.length) return;
+
+            carrito.splice(indice, 1);
             actualizarCarrito();
         }
 
@@ -1566,7 +1593,6 @@
         function abrirCarrito() {
             document.getElementById("carrito").classList.add("activo");
             document.getElementById("overlay").classList.add("activo");
-
             document.getElementById("carrito").setAttribute("aria-hidden", "false");
             document.body.classList.add("sin-scroll");
         }
@@ -1575,7 +1601,6 @@
         function cerrarCarrito() {
             document.getElementById("carrito").classList.remove("activo");
             document.getElementById("overlay").classList.remove("activo");
-
             document.getElementById("carrito").setAttribute("aria-hidden", "true");
             document.body.classList.remove("sin-scroll");
         }
@@ -1585,8 +1610,9 @@
         /* VER DETALLES DEL PRODUCTO */
         function verProducto(id) {
             const producto = productos.find(p => p.id === id);
-
             if (!producto) return;
+
+            colorSeleccionado = null;
 
             document.getElementById("modalImagen").src = producto.imagen;
             document.getElementById("modalImagen").alt = producto.nombre;
@@ -1598,20 +1624,60 @@
             document.getElementById("modalPrecio").textContent =
                 formatoPrecio(producto.precio);
 
+            const selector = document.getElementById("selectorColores");
+            const errorColor = document.getElementById("errorColor");
+            const botones = document.querySelectorAll(".color-opcion");
+
+            // Mostrar el selector exclusivamente en Alia tradicional.
+            selector.style.display = producto.id === 8 ? "block" : "none";
+            errorColor.style.display = "none";
+
+            botones.forEach(boton => {
+                boton.classList.remove("seleccionado");
+                boton.setAttribute("aria-pressed", "false");
+
+                boton.onclick = function () {
+                    colorSeleccionado = this.dataset.color;
+
+                    botones.forEach(otroBoton => {
+                        otroBoton.classList.remove("seleccionado");
+                        otroBoton.setAttribute("aria-pressed", "false");
+                    });
+
+                    this.classList.add("seleccionado");
+                    this.setAttribute("aria-pressed", "true");
+                    errorColor.style.display = "none";
+                };
+            });
+
             document.getElementById("modalAgregar").onclick = function () {
-                agregarCarrito(producto.id);
+                if (producto.id === 8 && !COLORES_ALIA.includes(colorSeleccionado)) {
+                    errorColor.style.display = "block";
+                    return;
+                }
+
+                agregarCarrito(
+                    producto.id,
+                    producto.id === 8 ? colorSeleccionado : null
+                );
+
                 cerrarModal();
                 abrirCarrito();
             };
 
             document.getElementById("modal").classList.add("activo");
             document.getElementById("modal").setAttribute("aria-hidden", "false");
+            document.body.classList.add("sin-scroll");
         }
 
         /* CERRAR MODAL */
         function cerrarModal() {
             document.getElementById("modal").classList.remove("activo");
             document.getElementById("modal").setAttribute("aria-hidden", "true");
+
+            if (!document.getElementById("carrito").classList.contains("activo")) {
+                document.body.classList.remove("sin-scroll");
+            }
         }
 
         document.getElementById("modal").addEventListener("click", function (evento) {
@@ -1641,6 +1707,11 @@
             carrito.forEach(producto => {
                 mensaje += `👜 ${producto.nombre}\n`;
                 mensaje += `Cantidad: ${producto.cantidad}\n`;
+
+                if (producto.color) {
+                    mensaje += `🎨 Color seleccionado: ${producto.color}\n`;
+                }
+
                 mensaje += `Precio unitario: ${formatoPrecio(producto.precio)}\n`;
                 mensaje += `Subtotal: ${formatoPrecio(producto.precio * producto.cantidad)}\n\n`;
             });
@@ -1654,8 +1725,6 @@
             mensaje += `💰 TOTAL: ${formatoPrecio(total)}\n\n`;
             mensaje += "Por favor, confírmame la disponibilidad y el costo del envío.";
 
-            // Número de WhatsApp de AOMI, con indicativo de Colombia.
-            // Sin signo +, espacios ni guiones.
             const numeroWhatsApp = "573218516022";
 
             const url = "https://wa.me/" +
